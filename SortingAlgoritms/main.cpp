@@ -1,6 +1,8 @@
 #include "SortingAlgoritms.h"
 #include <iostream>
-#define size 10
+#include <time.h> 
+#define size 100
+
 using namespace std;
 const char Arr[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
@@ -13,18 +15,21 @@ int main()
 	cout << "Source array: ";
 	for (int i = 0; i < size; i++)
 	{
-		A[i] = rand() % 50;
+		A[i] = rand() % 100;
 		cout << A[i] << " ";
 	}
-	QuickSort(A, left, right);
-	//sertionSort(A, size); //вызов функции
+	int start_time = clock();
+	//QuickSort(A, left, right);
+	InsertionSort(A, size);
 	//BogoSort(A, size);
 	//CountingSort(A, size);
-	cout << endl << "Binary Search: " << endl;
+	unsigned long long int end_time = clock();
+	cout << endl << "Insertion Sort: " << endl;
 	for (int i = 0; i < size; i++) cout << A[i] << " ";
-	cout << "Source element: "; cin >> key; //ввод ключа
-	if (BinarySearch(A, key, size) == -1) cout << "\nElement not found";
-	else cout << "\nElement number is: " << BinarySearch(A, key, size) + 1;
+	cout << "Execution time of a piece of program: " << end_time - start_time << " milliseconds\n";
+	//cout << "Source element: "; cin >> key; 
+	//if (BinarySearch(A, key, size) == -1) cout << "\nElement not found";
+	//else cout << "\nElement number is: " << BinarySearch(A, key, size) + 1;
 	delete[] A;
 	return 0;
 }
